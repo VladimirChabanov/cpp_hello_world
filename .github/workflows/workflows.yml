@@ -1,24 +1,22 @@
-name: Workflow
+GNU nano 7.1 test.yml
+name: Сборка и тестирование
 
 on: push
+
 jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+build-and-test:
+runs-on: ubuntu-latest
+steps:
+- name: Checkout репозитория
+uses: actions/checkout@v2
 
-      - name: Requirements
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y g++
+- name: Установка зависимостей
+run: |
+sudo apt-get update
+sudo apt-get install -y g++
+- name: Сборка приложения
+run: |
+g++ -o app app.cpp
 
-      - name: App
-        run: |
-          g++ -o app app.cpp
-
-      - name: Run Date Test
-        run: |
-          chmod +x ./tests/date-test.sh
-          ./tests/date-test.sh
-        shell: bash
+- name: Запуск теста
+run: bash tests/test_date.sh
