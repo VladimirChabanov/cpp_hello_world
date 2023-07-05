@@ -1,0 +1,22 @@
+GNU nano 7.1 test.yml
+name: Сборка и тестирование
+
+on: push
+
+jobs:
+build-and-test:
+runs-on: ubuntu-latest
+steps:
+- name: Checkout репозитория
+uses: actions/checkout@v2
+
+- name: Установка зависимостей
+run: |
+sudo apt-get update
+sudo apt-get install -y g++
+- name: Сборка приложения
+run: |
+g++ -o app app.cpp
+
+- name: Запуск теста
+run: bash tests/test_date.sh
