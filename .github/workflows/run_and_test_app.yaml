@@ -1,0 +1,18 @@
+name: Download and test
+on: push
+jobs:
+
+  build_and_test:
+    runs_on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: download
+        run: |
+          sudo apt update
+          sudo apt install -y g++
+      - name: compile
+        run: g++ -o app app.cpp
+      - name: start shell script
+        run: bash tests/test.sh
+      
