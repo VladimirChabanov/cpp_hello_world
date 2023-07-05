@@ -1,13 +1,24 @@
-from flask import Flask
-from datetime import datetime
+name: Workflow
 
-app = Flask(__name__)
+on: push 
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-@app.route('/')
-def current_date():
-now = datetime.now()
-formatted_date = now.strftime("%d.%m.%Y")
-return formatted_date
+      - name: Requirements
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++
 
-if __name__ == '__main__':
-app.run()
+      - name: App
+        run: |
+          g++ -o app app.cpp
+
+      - name: Run Date Test
+        run: |
+          chmod +x ./tests/test1.sh
+          ./tests/test1.sh
+        shell: bash
