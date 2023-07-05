@@ -2,7 +2,7 @@ name: Workflow
 
 on: workflow_dispatch
     branches:
-      - my-branch
+      - artem
 
 jobs:
   build-and-test:
