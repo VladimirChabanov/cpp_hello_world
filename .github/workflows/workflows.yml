@@ -1,12 +1,18 @@
-#!/bin/bash
-
-output=$(curl http://127.0.0.1:5000)
-
-expected_output="05.07.2023"
-
-if [ "$output" == "$expected_output" ]; then
-echo "Вывод программы совпадает с ожидаемым: $output"
-else
-echo "Вывод программы не совпадает с ожидаемым.
-exit 1
-fi
+name: Push Test
+run-name: Push Test
+on: push
+jobs:
+integration_testing:
+runs-on: ubuntu-latest
+steps:
+- name: Checkout
+uses: actions/checkout@v3
+- name: Install requirements
+run: pip install -r requirements.txt
+- name: Run app
+run: python3 ./src/app/app.py &
+- name: Test GET-request
+run: |
+chmod +x ./test/test.sh
+./test/test.sh
+shell: bash 
