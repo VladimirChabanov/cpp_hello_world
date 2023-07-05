@@ -1,0 +1,1 @@
+[![Test and build](https://github.com/LkiZt/cpp_hello_world/actions/workflows/test.yml/badge.svg)](https://github.com/LkiZt/cpp_hello_world/actions/workflows/test.yml)
