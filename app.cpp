@@ -1,4 +1,7 @@
-from datetime import date
+#include <iostream>
+#include <string>
 
-today = date.today()
-print(today.strftime('%Y-%m-%d'))
+int main(){
+std::string date = "05.07.2023";
+std::cout « date « std::endl;
+}
