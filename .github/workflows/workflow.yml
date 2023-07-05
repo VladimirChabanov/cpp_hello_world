@@ -19,6 +19,6 @@ jobs:
 
       - name: Run Date Test
         run: |
-          chmod +x ./test/date-test.sh
-          ./test/date-test.sh
+          chmod +x ./tests/date-test.sh
+          ./tests/date-test.sh
         shell: bash
