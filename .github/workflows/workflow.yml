@@ -17,4 +17,4 @@ jobs:
         run: |
             g++ -o app app.cpp
       - name: Запуск теста
-        run: bash tests/test.sh
+        run: bash tests/date-test.sh
