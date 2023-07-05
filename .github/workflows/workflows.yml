@@ -1,24 +1,12 @@
-name: Workflow
+#!/bin/bash
 
-on: push
-jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+output=$(curl http://127.0.0.1:5000)
 
-      - name: Requirements
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y g++
+expected_output="05.07.2023"
 
-      - name: App
-        run: |
-          g++ -o app app.cpp
-
-      - name: Run Date Test
-        run: |
-          chmod +x ./tests/date-test.sh
-          ./tests/date-test.sh
-        shell: bash
+if [ "$output" == "$expected_output" ]; then
+echo "Вывод программы совпадает с ожидаемым: $output"
+else
+echo "Вывод программы не совпадает с ожидаемым.
+exit 1
+fi
