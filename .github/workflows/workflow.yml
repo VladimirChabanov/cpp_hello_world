@@ -15,7 +15,7 @@ jobs:
 
       - name: App
         run: |
-          g++ -o app main.cpp
+          g++ -o app app.cpp
 
       - name: Run Date Test
         run: |
