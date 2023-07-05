@@ -1,18 +1,13 @@
-name: Push Test
-run-name: Push Test
-on: push
-jobs:
-integration_testing:
-runs-on: ubuntu-latest
-steps:
-- name: Checkout
-uses: actions/checkout@v3
-- name: Install requirements
-run: pip install -r requirements.txt
-- name: Run app
-run: python3 ./src/app/app.py &
-- name: Test GET-request
-run: |
-chmod +x ./test/test.sh
-./test/test.sh
-shell: bash 
+from flask import Flask
+from datetime import datetime
+
+app = Flask(__name__)
+
+@app.route('/')
+def current_date():
+now = datetime.now()
+formatted_date = now.strftime("%d.%m.%Y")
+return formatted_date
+
+if __name__ == '__main__':
+app.run()
