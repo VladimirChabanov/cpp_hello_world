@@ -9,5 +9,5 @@ if [ "$output" == "$expected_output" ]; then
 	exit 0
 else
 	echo "Неверно"
-	exit 0
+	exit 1
 fi
