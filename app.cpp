@@ -1,5 +1,4 @@
-#include <iostream>
- 
-int main(){
-    std::cout << "Hello World" << std::endl;
-}
+from datetime import date
+
+today = date.today()
+print(today.strftime('%Y-%m-%d'))
