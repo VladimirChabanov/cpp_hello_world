@@ -1,7 +1,6 @@
 name: Workflow
 
-on:
-  push:
+on: workflow_dispatch
     branches:
       - my-branch
 
