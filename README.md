@@ -1,1 +1,1 @@
-[![Сборка и тестирование](https://github.com/JunAlex/cpp_hello_world-1/actions/workflows/workflow.yml/badge.svg?branch=timbranch&event=workflow_run)](https://github.com/JunAlex/cpp_hello_world-1/actions/workflows/workflow.yml)
+[![Сборка и тестирование](https://github.com/JunAlex/cpp_hello_world-1/actions/workflows/workflow.yml/badge.svg)](https://github.com/JunAlex/cpp_hello_world-1/actions/workflows/workflow.yml)
