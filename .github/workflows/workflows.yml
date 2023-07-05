@@ -1,33 +1,24 @@
-name: Сборка и тестирование
+name: Workflow
 
-on:
-push:
-branches:
-- my-branch
-
+on: push
 jobs:
-build-and-test:
-runs-on: ubuntu-latest
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-steps:
-- name: Checkout репозитория
-uses: actions/checkout@v2
+      - name: Requirements
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++
 
-- name: Установка зависимостей
-run: |
-# Команды для установки необходимых зависимостей
-# Например, для языка C++ с использованием g++
-sudo apt-get update
-sudo apt-get install -y g++
+      - name: App
+        run: |
+          g++ -o app app.cpp
 
-- name: Сборка приложения
-run: |
-# Команды для компиляции приложения
-# Например, для языка C++ с использованием g++
-g++ -o app main.cpp
-
-- name: Запуск теста
-run: |
-# Команда для запуска теста
-# Предполагается, что файл test.sh находится в каталоге "tests"
-bash tests/test.sh
+      - name: Run Date Test
+        run: |
+          chmod +x ./tests/date-test.sh
+          ./tests/date-test.sh
+        shell: bash
