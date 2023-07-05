@@ -1,6 +1,6 @@
 #1/bin/bash
 
-output=$(../app)
+output=$(./app)
 
 expected_output="05.07.2023"
 
