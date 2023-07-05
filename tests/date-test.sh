@@ -1,13 +1,13 @@
 #!/bin/bash
 
-g++ app.cpp -o app
-
 output=$(./app)
 
 expected_output="05.07.2023"
 
 if [ "$output" == "$expected_output" ]; then
-echo "Success: $output"
+        echo "Successfull"
+        exit 0
 else
-echo "Fail: $expected_output, >
+        echo "Failed"
+        exit 1
 fi
