@@ -1,0 +1,20 @@
+name: new_workflow
+
+on: push
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: installing
+        run: |
+              sudo apt-get update
+              sudo apt-get install -y g++
+              
+      - name: build
+        run: |
+            g++ -o app app.cpp
+      - name: launch_test
+        run: bash tests/test.sh
