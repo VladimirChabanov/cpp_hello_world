@@ -18,4 +18,4 @@ jobs:
             g++ -o app app.cpp
 
       - name: Запуск теста
-        run: bash test/data.sh
+        run: bash tests/data.sh
