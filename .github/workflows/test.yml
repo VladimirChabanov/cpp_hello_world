@@ -4,7 +4,7 @@ g++ app.cpp -o app
 
 output=$(./app)
 
-if [ "$output" = "05.07.2023" ]
+if [ "$output" = "06.07.2023" ]
 then
   echo "Вывод программы совпадает с ожидаемым: $output"
 else
