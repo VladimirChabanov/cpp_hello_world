@@ -1,0 +1,17 @@
+name: Test and build
+on: push
+jobs:
+  test-date:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check
+        uses: actions/checkout@v2
+      - name: Install dependency
+        run: |
+              sudo apt-get update
+              sudo apt-get install -y g++
+      - name: Build
+        run: |
+            g++ -o app app.cpp
+      - name: Run test
+        run: bash tests/dateTest.sh
