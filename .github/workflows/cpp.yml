@@ -1,0 +1,24 @@
+name: Workflow
+
+on: push 
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: installing requirements
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++
+
+      - name: App
+        run: |
+          g++ -o app app.cpp
+
+      - name: Run Date Test
+        run: |
+          chmod +x ./tests/test.sh
+          ./tests/test.sh
+        shell: bash
