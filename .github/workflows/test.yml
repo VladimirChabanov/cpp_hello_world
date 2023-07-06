@@ -1,12 +1,21 @@
-#!/bin/bash
+name: Сборка и тестирование
 
-g++ app.cpp -o app
+on: push
 
-output=$(./app)
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout репозитория
+        uses: actions/checkout@v2
 
-if [ "$output" = "06.07.2023" ]
-then
-  echo "Вывод программы совпадает с ожидаемым: $output"
-else
-  echo "Вывод программы не совпадает с ожидаемым. Ожидается: $expected_output, получено: $output"
-fi
+      - name: Установка зависимостей
+        run: |
+              sudo apt-get update
+              sudo apt-get install -y g++
+      - name: Сборка приложения
+        run: |
+            g++ -o app app.cpp
+
+      - name: Запуск теста
+        run: bash tests/test_date.sh
